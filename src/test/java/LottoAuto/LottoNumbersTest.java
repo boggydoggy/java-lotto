@@ -23,7 +23,7 @@ public class LottoNumbersTest {
 
         LottoNumbers lottoNumbers = new LottoNumbers(numbers);
 
-        assertThat(lottoNumbers.getNumbers()).isSameAs(numbers);
+        assertThat(lottoNumbers.getNumbers()).contains(1, 2, 3, 4, 5, 6);
     }
 
     @DisplayName("로또 1장당 6개의 수가 존재한다.")
@@ -37,5 +37,27 @@ public class LottoNumbersTest {
 
             LottoNumbers lottoNumbers = new LottoNumbers(numbers);
         }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또 안의 숫자들은 중복되지 않는다.")
+    @Test
+    void overlapTest() {
+        assertThatThrownBy(() -> {
+            List<LottoNumber> numbers = Arrays.asList(
+                    new LottoNumber(1),
+                    new LottoNumber(2),
+                    new LottoNumber(2),
+                    new LottoNumber(3),
+                    new LottoNumber(4),
+                    new LottoNumber(5));
+
+            LottoNumbers lottoNumbers = new LottoNumbers(numbers);
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또 안의 숫자들은 정렬되어야 한다.")
+    @Test
+    void orderTest() {
+
     }
 }

@@ -10,7 +10,7 @@ public class LottoNumberGenerator {
     private Random random = new Random();
 
     private final int MAXIMUM_LOTTO_NUMBER = 45;
-    private final int LOTTO_SIZE = 6;
+    private final int SIZE_OF_LOTTO_NUMBERS = 6;
 
     public LottoNumberGenerator() {
         samples = new ArrayList<>();
@@ -23,25 +23,20 @@ public class LottoNumberGenerator {
     }
 
     public LottoNumbers createNumbers() {
-        List<Integer> choices = new ArrayList<>();
-        List<LottoNumber> numbers = new ArrayList<>();
+        List<LottoNumber> numbers = new ArrayList<>();;
 
-        for(int iterator = 0; iterator < LOTTO_SIZE; iterator++) {
-            choices.add(samples.get(0));
-            samples.remove(0);
+        for(int iterator = 0; iterator < SIZE_OF_LOTTO_NUMBERS; iterator++) {
+            numbers.add(new LottoNumber(createANumber()));
         }
-
-        sortNumbers(choices);
-        numbers = convert(choices);
 
         return new LottoNumbers(numbers);
     }
 
-    public LottoNumber createBonusNumber() {
-        int choice = samples.get(0);
+    public int createANumber() {
+        int randomNumber = samples.get(0);
         samples.remove(0);
 
-        return new LottoNumber(choice);
+        return randomNumber;
     }
 
     private void sortNumbers(List<Integer> numbers) {

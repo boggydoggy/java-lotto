@@ -6,14 +6,6 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class LottoAutoTest {
-    @DisplayName("로또 1장의 가격은 1000원이다.")
-    @Test
-    void lottoOneTest() {
-        Lotto lotto = new Lotto();
-
-        assertThat(lotto.getPRICE()).isEqualTo(1000);
-    }
-
     @DisplayName(" 로또 구입 금액을 입력하면 구입 금액에 해당하는 로또를 발급해야 한다")
     @Test
     void lottoBuyTest() {
