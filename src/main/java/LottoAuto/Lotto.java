@@ -5,7 +5,9 @@ import java.util.*;
 public class Lotto {
     private final int PRICE = 1000;
     private final int LOTTO_SIZE = 6;
-    private List<Integer> numbers = new ArrayList<>();
+    private final int MAXIMUM_LOTTO_NUMBER = 45;
+
+    private LottoNumbers numbers;
 
     public Lotto() {
         List<Integer> samples = createNumbers();
@@ -17,20 +19,26 @@ public class Lotto {
         }
         sortNumbers();
     }
-    public Lotto(List<Integer> numbers) {
+
+    public Lotto(LottoNumbers numbers) {
         this.numbers = numbers;
         sortNumbers();
     }
 
     private List<Integer> createNumbers() {
         List<Integer> samples = new ArrayList<>();
-        for(int iterator = 0; iterator < 45; iterator++) {
+        for(int iterator = 0; iterator < MAXIMUM_LOTTO_NUMBER; iterator++) {
             samples.add(iterator+1);
         }
         return samples;
     }
-    private void sortNumbers() { Collections.sort(numbers); }
 
-    public int getPRICE() { return PRICE; }
-    public List<Integer> getNumbers() { return numbers; }
+    private void sortNumbers() {
+        Collections.sort(numbers);
+    }
+
+    public int getPRICE() {
+        return PRICE;
+    }
+
 }

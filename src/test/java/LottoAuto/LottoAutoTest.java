@@ -3,9 +3,6 @@ package LottoAuto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class LottoAutoTest {
@@ -26,16 +23,7 @@ public class LottoAutoTest {
         assertThat(lottoAuto.getTickets()).isEqualTo(14);
     }
 
-    @DisplayName("로또 1장당 6개의 랜덤 숫자를 생성한다.")
-    @Test
-    void lottoNumberTest() {
-        List<Integer> numbers = Arrays.asList(1,2,3,4,5,6);
-        Lotto lotto = new Lotto(numbers);
-
-        assertThat(lotto.getNumbers()).isSameAs(numbers);
-    }
-
-    @DisplayName("로또 번호는 정렬되어야 한다.")
+    /*@DisplayName("로또 번호는 정렬되어야 한다.")
     @Test
     void sortNumbersTest() {
         List<Integer> numbers = Arrays.asList(5,2,6,4,1,3);
@@ -43,5 +31,5 @@ public class LottoAutoTest {
 
         assertThat(lotto.getNumbers()).isEqualTo(Arrays.asList(1, 2, 3, 4, 5, 6));
     }
-
+*/
 }
