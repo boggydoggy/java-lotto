@@ -16,4 +16,8 @@ public class LottoNumber {
             throw new IllegalArgumentException("로또 숫자는 1부터 45까지의 수입니다.");
         }
     }
+
+    public int getNumber() {
+        return number;
+    }
 }
