@@ -6,11 +6,12 @@ import java.util.List;
 
 public class LottoNumbers {
     private List<LottoNumber> numbers;
-    private final int SIZE_OF_LOTTO_NUMBERS = 6;
+    private static final int SIZE_OF_LOTTO_NUMBERS = 6;
 
     public LottoNumbers(List<LottoNumber> numbers) {
         checkNumberCount(numbers);
-        //checkOverlap(numbers);
+        checkOverlap(numbers);
+        sortNumbers(numbers);
 
         this.numbers = numbers;
     }
@@ -22,14 +23,41 @@ public class LottoNumbers {
     }
 
     private void checkOverlap(List<LottoNumber> numbers) {
+        List<Integer> convertedNumbers = LottoNumberToInt(numbers);
+
         for(LottoNumber iterator: numbers) {
-            if(Collections.frequency(getNumbers(), iterator) > 1) {
+            if(Collections.frequency(convertedNumbers, iterator.getNumber()) > 1) {
                 throw new IllegalArgumentException("로또 1장에는 중복되는 수가 있어선 안 됩니다.");
             }
         }
     }
 
+    //TODO: sortNumber 구현 및 Test 추가
+    private void sortNumbers(List<LottoNumber> numbers) {
 
+
+        Collections.sort(numbers);
+    }
+
+    private List<LottoNumber> IntToLottoNumber(List<Integer> numbers) {
+        List<LottoNumber> convertedNumbers = new ArrayList<>();
+
+        for(Integer iterator: numbers) {
+            convertedNumbers.add(new LottoNumber(iterator.intValue()));
+        }
+
+        return convertedNumbers;
+    }
+
+    private List<Integer> LottoNumberToInt(List<LottoNumber> numbers) {
+        List<Integer> convertedNumbers = new ArrayList<>();
+
+        for(LottoNumber iterator: numbers) {
+            convertedNumbers.add(iterator.getNumber());
+        }
+
+        return convertedNumbers;
+    }
 
     public List<Integer> getNumbers() {
         List<Integer> numbers = new ArrayList<>();

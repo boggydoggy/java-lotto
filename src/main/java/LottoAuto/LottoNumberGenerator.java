@@ -9,8 +9,8 @@ public class LottoNumberGenerator {
     private List<Integer> samples;
     private Random random = new Random();
 
-    private final int MAXIMUM_LOTTO_NUMBER = 45;
-    private final int SIZE_OF_LOTTO_NUMBERS = 6;
+    private final static int MAXIMUM_LOTTO_NUMBER = 45;
+    private final static int SIZE_OF_LOTTO_NUMBERS = 6;
 
     public LottoNumberGenerator() {
         samples = new ArrayList<>();
@@ -39,17 +39,4 @@ public class LottoNumberGenerator {
         return randomNumber;
     }
 
-    private void sortNumbers(List<Integer> numbers) {
-        Collections.sort(numbers);
-    }
-
-    private List<LottoNumber> convert(List<Integer> numbers) {
-        List<LottoNumber> convertedNumbers = new ArrayList<>();
-
-        for(Integer iterator: numbers) {
-            convertedNumbers.add(new LottoNumber(iterator.intValue()));
-        }
-
-        return convertedNumbers;
-    }
 }
